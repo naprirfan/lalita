@@ -1,10 +1,9 @@
 module.exports = {
   entry: [
-    './src/index.js'
+    './view/src/index.js'
   ],
   output: {
-    path: __dirname,
-    publicPath: '/',
+    path: __dirname + '/view',
     filename: 'bundle.js'
   },
   module: {

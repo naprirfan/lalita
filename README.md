@@ -1,2 +1,2 @@
-# lalita
-FE repo
+# Lalita
+Frontend Repo

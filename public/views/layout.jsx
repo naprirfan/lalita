@@ -1,11 +1,7 @@
-'use strict';
+import React, { Component } from 'react';
 
-var React = require('react');
-
-module.exports = React.createClass({
-  displayName: 'Layout',
-
-  render: function render() {
+export default class Layout extends Component {
+  render() {
     return (
       <html>
         <head>
@@ -15,7 +11,6 @@ module.exports = React.createClass({
         </head>
         <body>
           <div>
-            {/* Router now automatically populates this.props.children of your components based on the active route. https://github.com/rackt/react-router/blob/latest/CHANGES.md#routehandler */}
             {this.props.children}
           </div>
           <script src='/bundle.js'></script>
@@ -23,4 +18,4 @@ module.exports = React.createClass({
       </html>
     );
   }
-});
+}

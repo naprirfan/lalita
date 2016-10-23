@@ -1,9 +1,9 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router';
 
-import Layout from './views/layout.jsx';
-import Index from './views/index.jsx';
-import Error404 from './views/404.jsx';
+import Layout from './components/layout.jsx';
+import Index from './components/index.jsx';
+import Error404 from './components/404.jsx';
 
 module.exports = (
   <Router history={browserHistory}>

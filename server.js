@@ -1,20 +1,19 @@
 'use strict';
 
-const PORT = 3000;
-
-import {join} from 'path';
+import { join } from 'path';
 import express from 'express';
 import favicon from 'serve-favicon';
 import ReactEngine from 'react-engine';
 import movies from './movies.json';
-import routes from './public/routes.jsx';
+import routes from './views/routes.jsx';
+import { PORT } from './config';
 
 let app = express();
 
 // create the view engine with `react-engine`
 let engine = ReactEngine.server.create({
   routes: routes,
-  routesFilePath: join(__dirname, '/public/routes.jsx'),
+  routesFilePath: join(__dirname, '/views/routes.jsx'),
   performanceCollector: function(stats) {
     console.log(stats);
   }
@@ -24,7 +23,7 @@ let engine = ReactEngine.server.create({
 app.engine('.jsx', engine);
 
 // set the view directory
-app.set('views', join(__dirname, '/public/views'));
+app.set('views', join(__dirname, '/views/components'));
 
 // set jsx as the view engine
 app.set('view engine', 'jsx');
@@ -33,9 +32,9 @@ app.set('view engine', 'jsx');
 app.set('view', ReactEngine.expressView);
 
 // expose public folder as static assets
-app.use(express.static(join(__dirname, '/public')));
+app.use(express.static(join(__dirname, '/views')));
 
-app.use(favicon(join(__dirname, '/public/favicon.ico')));
+app.use(favicon(join(__dirname, '/views/favicon.ico')));
 
 // add our app routes
 app.get('*', function(req, res) {

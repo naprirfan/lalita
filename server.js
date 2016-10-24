@@ -4,7 +4,6 @@ import { join } from 'path';
 import express from 'express';
 import favicon from 'serve-favicon';
 import ReactEngine from 'react-engine';
-import movies from './movies.json';
 import routes from './views/routes.jsx';
 import { PORT } from './config';
 
@@ -37,10 +36,16 @@ app.use(express.static(join(__dirname, '/views')));
 app.use(favicon(join(__dirname, '/views/favicon.ico')));
 
 // add our app routes
+app.get('/me', function(req, res) {
+  res.redirect('/403')
+});
+
+app.get('/403', function(req, res) {
+  res.status(403).render(req.url);
+})
+
 app.get('*', function(req, res) {
-  res.render(req.url, {
-    movies: movies
-  });
+  res.render(req.url);
 });
 
 app.use(function(err, req, res, next) {
